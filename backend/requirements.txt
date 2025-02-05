@@ -1,0 +1,27 @@
+# Pydantic (데이터 검증)
+pydantic==2.3.0
+pydantic-settings==2.0.3
+
+# AI Search (Qdrant + Sentence Transformers)
+qdrant-client==1.7.1  # Qdrant 벡터 검색
+sentence-transformers==2.2.2  # 문장 임베딩
+
+# FastAPI & ASGI Server
+fastapi>=0.103.0
+uvicorn==0.20.0
+
+# Database & ORM
+sqlalchemy==1.4.46
+psycopg2
+psycopg2-binary==2.9.6  # PostgreSQL 드라이버 (PostgreSQL을 사용할 경우)
+
+# Authentication & Security
+passlib[bcrypt]==1.7.4  # 비밀번호 해싱
+python-multipart==0.0.6  # 파일 업로드 지원
+python-jose==3.3.0  # JWT 인증
+
+# Hugging Face 모델 다운로드 관련 패키지
+huggingface_hub==0.16.4  # `cached_download` 문제 해결용
+
+# 기타 유틸리티
+requests==2.28.1
