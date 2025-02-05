@@ -4,6 +4,8 @@ COPY . /app
 
 # ✅ alembic.ini를 /app 루트에 복사 (Alembic 실행 시 필요)
 COPY alembic.ini /app/alembic.ini
+COPY alembic /app/alembic
+
 
 
 RUN pip install --no-cache-dir -r requirements.txt
