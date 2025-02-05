@@ -13,3 +13,8 @@ def get_db():
         yield db
     finally:
         db.close()
+
+# Alembic 마이그레이션 실행 전에 테이블이 없으면 기본 생성 (초기 실행용)
+def init_db():
+    from app.models.user import User  # ✅ 필요한 모델 임포트
+    Base.metadata.create_all(bind=engine)  # ✅ 테이블 생성
