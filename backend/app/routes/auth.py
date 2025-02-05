@@ -8,11 +8,11 @@ router = APIRouter()
 async def login(request: LoginRequest):
     """
     ### 사용자 로그인 API
-    - **email**: 사용자 이메일
+    - **username**: 사용자 ID
     - **password**: 비밀번호
     - **반환값**: 액세스 토큰
     """
-    token = await authenticate_user(request.email, request.password)
+    token = authenticate_user(request.username, request.password)
     if not token:
         raise HTTPException(status_code=401, detail="Invalid credentials")
     return {"access_token": token, "token_type": "bearer"}

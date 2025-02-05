@@ -5,6 +5,7 @@ from passlib.context import CryptContext
 import logging
 
 logging.basicConfig(level=logging.DEBUG)
+logger = logging.getLogger(__name__)
 
 # JWT 설정
 SECRET_KEY = "your-secret-key"
@@ -29,30 +30,31 @@ def create_access_token(data: dict, expires_delta: Optional[timedelta] = None):
     to_encode.update({"exp": expire})
     return jwt.encode(to_encode, SECRET_KEY, algorithm=ALGORITHM)
 
-# 사용자 인증 (더미 데이터 사용)
+# 사용자 인증 (더미 데이터)
 fake_users_db = {
-    "user@example.com": {
-        "email": "user@example.com",
+    "testuser": {  # ✅ 아이디(username) 기반으로 변경
+        "username": "testuser",
         "hashed_password": hash_password("password123"),
     }
 }
 
-def authenticate_user(email: str, password: str) -> Optional[str]:
-    logging.debug(f"Authenticating user: {email}")
-    user = fake_users_db.get(email)
+
+def authenticate_user(username: str, password: str):
+    logging.debug(f"Authenticating user: {username}")
+    user = fake_users_db.get(username)
 
     if not user:
-        logging.debug("User not found")
+        logger.warning(f"User not found: {username}")
     return None
 
     if not verify_password(password, user["hashed_password"]):
-        logging.debug("Password verification failed")
+        logger.warning(f"Password verification failed for user: {username}")
     return None
     
     # if not user or not verify_password(password, user["hashed_password"]):
         # return None
 
-    token = create_access_token({"sub": email})
+    token = create_access_token({"sub": username})
     logging.debug(f"Token generated: {token}")
     return token
-    # return create_access_token({"sub": email})
+    # return create_access_token({"sub": username})
