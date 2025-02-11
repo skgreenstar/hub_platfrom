@@ -1,7 +1,7 @@
 # backend/app/main.py
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from app.routes import auth, files, search, users
+from app.routes import auth, files, search, users, documents
 
 app = FastAPI(
     title="Hub Platform API",
@@ -28,3 +28,4 @@ app.include_router(auth.router, prefix="/auth", tags=["Authentication"])
 app.include_router(files.router, prefix="/files", tags=["File Management"])
 app.include_router(search.router, prefix="/search", tags=["AI Search"])
 app.include_router(users.router, prefix="/users", tags=["User Management"])
+app.include_router(documents.router, prefix="/documents", tags=["User Management"]) # ✅ FastAPI에 추가

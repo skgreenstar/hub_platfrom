@@ -28,3 +28,8 @@ requests==2.28.1
 
 alembic
 email-validator
+# Google Drive API 인증
+google-auth 
+google-auth-oauthlib 
+google-auth-httplib2 
+google-api-python-client
