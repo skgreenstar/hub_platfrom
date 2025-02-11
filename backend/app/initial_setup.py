@@ -6,8 +6,6 @@ from app.database import Base, engine, SessionLocal
 from app.models.user import User  # 예제 모델
 from app.config import DATABASE_URL
 
-DATABASE_URL = os.getenv("DATABASE_URL", "postgresql://user:password@postgres/dbname")
-
 def wait_for_db():
     """PostgreSQL이 실행될 때까지 대기"""
     retries = 5
