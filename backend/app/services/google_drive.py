@@ -2,10 +2,14 @@ import os
 import json
 from googleapiclient.discovery import build
 from google.oauth2 import service_account
+from dotenv import load_dotenv
+
+load_dotenv()
 
 # Google Drive API 설정
+ # Google Cloud에서 받은 JSON 파일
+SERVICE_ACCOUNT_FILE = os.getenv("GOOGLE_CREDENTIALS", "/app/credentials.json") 
 SCOPES = ["https://www.googleapis.com/auth/drive"]
-SERVICE_ACCOUNT_FILE = "credentials.json"  # Google Cloud에서 받은 JSON 파일
 
 def authenticate_drive():
     """Google Drive API 인증"""

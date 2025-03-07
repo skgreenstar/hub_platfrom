@@ -9,6 +9,15 @@ os.makedirs(UPLOAD_DIR, exist_ok=True)  # 업로드 디렉토리 자동 생성
 
 router = APIRouter()
 
+# 📂 업로드된 파일 목록 API
+@router.get("/files/list", summary="파일 목록 가져오기")
+async def list_files():
+    try:
+        files = os.listdir(UPLOAD_DIR)
+        return files
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+    
 @router.post("/files/upload", summary="파일 업로드", description="로컬 서버에 파일을 업로드합니다.")
 async def save_file(file: UploadFile):
     """

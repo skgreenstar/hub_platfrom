@@ -47,3 +47,10 @@ export const downloadFile = async (filename: string) => {
   link.click();
   document.body.removeChild(link);
 };
+
+
+// 📂 파일 목록 가져오기
+export const fetchFiles = async () => {
+  const response = await axios.get(`${API_URL}/files/list`);
+  return response.data;
+};

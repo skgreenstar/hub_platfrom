@@ -15,6 +15,9 @@ const Navbar = () => {
         <Button color="inherit" component={Link} to="/search">
           Search
         </Button>
+        <Button color="inherit" component={Link} to="/filemanagement">
+          드라이브 관리
+        </Button>
       </Toolbar>
     </AppBar>
   );

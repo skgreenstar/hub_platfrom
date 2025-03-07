@@ -4,6 +4,8 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Home from "./pages/Home";
 import SearchList from "./pages/SearchList";
+import FileManagement from "./pages/FileManagement";
+
 
 // ✅ 로그인 여부를 확인하는 함수
 const isAuthenticated = () => {
@@ -23,6 +25,7 @@ const App = () => {
         <Route path="/register" element={<Register />} />  {/* ✅ 회원가입 페이지는 보호하지 않음 */}
         <Route path="/home" element={<PrivateRoute element={<Home />} />} />
         <Route path="/search" element={<PrivateRoute element={<SearchList />} />} />
+        <Route path="/filemanagement" element={<PrivateRoute element={<FileManagement />} />} />
       </Routes>
     </Router>
   );
