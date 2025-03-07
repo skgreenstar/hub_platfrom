@@ -19,4 +19,5 @@ class UserResponse(BaseModel):
     email: str
 
     class Config:
-        orm_mode = True
+        from_attributes = True  
+        # ✅ Pydantic v2에서 올바른 설정
